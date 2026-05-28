@@ -55,19 +55,25 @@
         .brand {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
             text-decoration: none;
         }
 
         .logo-img {
-            height: 32px;
+            height: 36px;
             width: auto;
             object-fit: contain;
             display: block;
         }
 
+        .title-stack {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.2;
+        }
+
         .logo-text {
-            font-size: 20px;
+            font-size: 18px;
             font-weight: 800;
             letter-spacing: -0.5px;
             color: var(--text-main);
@@ -77,7 +83,13 @@
             color: var(--accent);
         }
 
-        /* Far-right action control grouping */
+        .logo-subtitle {
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--text-muted);
+            margin-top: 1px;
+        }
+
         .header-actions {
             display: flex;
             align-items: center;
@@ -134,8 +146,9 @@
         @media (min-width: 768px) {
             body { padding: 0 40px; }
             header { padding: 20px 0; }
-            .logo-img { height: 38px; gap: 12px; }
+            .logo-img { height: 42px; gap: 12px; }
             .logo-text { font-size: 24px; }
+            .logo-subtitle { font-size: 13px; }
             .back-link { font-size: 15px; }
             .header-actions { gap: 20px; }
             .theme-toggle-btn { width: 34px; height: 34px; font-size: 15px; }
@@ -150,7 +163,10 @@
         <header>
             <a href="/" class="brand">
                 <img id="siteLogo" alt="AgencyCalc Pro Logo" class="logo-img">
-                <div class="logo-text">Agency<span>Calc Pro</span></div>
+                <div class="title-stack">
+                    <div class="logo-text">Agency<span>Calc Pro</span></div>
+                    <div class="logo-subtitle">Recruitment Margin Tool</div>
+                </div>
             </a>
             
             <div class="header-actions">
