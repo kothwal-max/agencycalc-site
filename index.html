@@ -54,16 +54,17 @@
             align-items: center;
         }
 
+        /* Positions logo graphic and text side-by-side in top-left corner */
         .brand {
             display: flex;
             align-items: center;
             gap: 12px;
         }
 
-        /* Constrains your 1024x1024 master down gracefully */
+        /* Constrains your 1024x1024 master down gracefully in the corner */
         .logo-img {
-            height: 36px;
-            width: 36px;
+            height: 38px;
+            width: auto;
             object-fit: contain;
             display: block;
         }
@@ -79,23 +80,24 @@
             color: var(--accent);
         }
 
+        /* Clear, visible theme button toggle switch layout */
         .theme-toggle-btn {
             background-color: var(--toggle-bg);
-            border: none;
+            border: 1px solid var(--border);
             cursor: pointer;
-            width: 40px;
-            height: 40px;
+            width: 44px;
+            height: 44px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             outline: none;
+            font-size: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
         }
 
-        .theme-toggle-btn svg {
-            width: 20px;
-            height: 20px;
-            fill: var(--text-main);
+        .theme-toggle-btn:hover {
+            transform: scale(1.05);
         }
 
         .hero {
@@ -181,15 +183,15 @@
 <body>
     <div class="container">
         <header>
+            <!-- Top Left Branding Group -->
             <div class="brand">
-                <!-- Theme-Aware Image Target -->
                 <img id="siteLogo" src="logo-light.png" alt="AgencyCalc Pro Logo" class="logo-img">
                 <div class="logo-text">Agency<span>Calc Pro</span></div>
             </div>
+            
+            <!-- Top Right Theme Control Container -->
             <button class="theme-toggle-btn" id="themeToggle" aria-label="Toggle light/dark mode">
-                <svg id="themeIcon" viewBox="0 0 24 24">
-                    <path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1zM5.99 4.58c-.39-.39-1.03-.39-1.41 0s-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41L5.99 4.58zm12.37 12.37c-.39-.39-1.03-.39-1.41 0s-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41l-1.06-1.06zm1.06-12.37c-.39-.39-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06c.39-.38.39-1.02 0-1.41zM7.05 18.01c-.39-.39-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06c.39-.39.39-1.03 0-1.41z"/>
-                </svg>
+                <span id="themeIcon">☀️</span>
             </button>
         </header>
         
@@ -229,28 +231,29 @@
         const themeIcon = document.getElementById('themeIcon');
         const siteLogo = document.getElementById('siteLogo');
         
-        const sunPath = `M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1zM5.99 4.58c-.39-.39-1.03-.39-1.41 0s-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41L5.99 4.58zm12.37 12.37c-.39-.39-1.03-.39-1.41 0s-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41l-1.06-1.06zm1.06-12.37c-.39-.39-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06c.39-.38.39-1.02 0-1.41zM7.05 18.01c-.39-.39-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06c.39-.39.39-1.03 0-1.41z`;
-        const moonPath = `M12.3 22h-.1c-5.5 0-10-4.5-10-10 0-4.8 3.5-8.9 8.2-9.8.6-.1 1.2.3 1.3.9.1.6-.2 1.2-.8 1.4-3.5 1.3-5.8 4.7-5.8 8.5 0 4.4 3.6 8 8 8 3.8 0 7.2-2.3 8.5-5.8.2-.6.8-.9 1.4-.8.6.1 1 .7.9 1.3-.9 4.7-5 8.2-9.8 8.3z`;
+        // Plain text emoji indicators for perfect cross-platform loading
+        const sunIcon = "☀️";
+        const moonIcon = "🌙";
 
         // Check for saved preference or fallback to system configuration
         const currentTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
         
         // Render Initial State
         document.documentElement.setAttribute('data-theme', currentTheme);
-        themeIcon.innerHTML = currentTheme === 'dark' ? moonPath : sunPath;
+        themeIcon.textContent = currentTheme === 'dark' ? moonIcon : sunIcon;
         siteLogo.src = currentTheme === 'dark' ? 'logo-light.png' : 'logo-dark.png';
 
         // Swap state functions dynamically
         toggleBtn.addEventListener('click', () => {
-            let theme = document.documentElement.getAttribute('data-theme');
+            let theme = document.documentElement.setAttribute('data-theme');
             if (theme === 'dark') {
                 document.documentElement.setAttribute('data-theme', 'light');
-                themeIcon.innerHTML = sunPath;
+                themeIcon.textContent = sunIcon;
                 siteLogo.src = 'logo-dark.png';
                 localStorage.setItem('theme', 'light');
             } else {
                 document.documentElement.setAttribute('data-theme', 'dark');
-                themeIcon.innerHTML = moonPath;
+                themeIcon.textContent = moonIcon;
                 siteLogo.src = 'logo-light.png';
                 localStorage.setItem('theme', 'dark');
             }
