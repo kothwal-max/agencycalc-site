@@ -3,54 +3,256 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AgencyCalc - Advanced UK Recruitment Financial Architecture</title>
+    <title>AgencyCalc Pro - Recruitment CPQ Tool</title>
     <style>
-        :root { --bg-color: #0f172a; --text-main: #f8fafc; --text-muted: #94a3b8; --accent: #0ea5e9; --accent-hover: #38bdf8; --card-bg: #1e293b; --border: #334155; }
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background-color: var(--bg-color); color: var(--text-main); line-height: 1.6; padding: 0 20px; }
-        .container { max-width: 1100px; margin: 0 auto; }
-        header { padding: 30px 0; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-size: 22px; font-weight: 700; color: var(--text-main); }
-        .logo span { color: var(--accent); }
-        .hero { padding: 90px 0 60px 0; text-align: center; max-width: 800px; margin: 0 auto; }
-        h1 { font-size: 44px; font-weight: 800; line-height: 1.2; margin-bottom: 24px; letter-spacing: -1px; }
-        .hero p { font-size: 18px; color: var(--text-muted); margin-bottom: 40px; }
-        .cta-btn { display: inline-block; background-color: var(--accent); color: var(--bg-color); padding: 14px 28px; border-radius: 6px; text-decoration: none; font-weight: 600; }
-        .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; padding: 60px 0; }
-        .feature-card { background-color: var(--card-bg); border: 1px solid var(--border); padding: 32px; border-radius: 8px; }
-        .feature-card h3 { font-size: 20px; margin-bottom: 12px; color: var(--accent); }
-        .feature-card p { color: var(--text-muted); font-size: 15px; }
-        footer { margin-top: 60px; padding: 40px 0; border-top: 1px solid var(--border); text-align: center; font-size: 14px; color: var(--text-muted); }
-        footer a { color: var(--text-muted); text-decoration: none; margin: 0 10px; }
-        footer a:hover { color: var(--accent); }
+        /* CSS variables for light and dark theme architecture */
+        :root {
+            --bg-color: #f8fafc;
+            --text-main: #0f172a;
+            --text-muted: #475569;
+            --accent: #0284c7;
+            --card-bg: #ffffff;
+            --border: #e2e8f0;
+            --toggle-bg: #e2e8f0;
+        }
+
+        [data-theme="dark"] {
+            --bg-color: #0f172a;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent: #0ea5e9;
+            --card-bg: #1e293b;
+            --border: #334155;
+            --toggle-bg: #334155;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 0 20px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        header {
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-img {
+            height: 40px;
+            width: auto;
+            display: block;
+        }
+
+        .logo-text {
+            font-size: 24px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            color: var(--text-main);
+        }
+
+        .logo-text span {
+            color: var(--accent);
+        }
+
+        /* Modern circular theme switch button */
+        .theme-toggle-btn {
+            background-color: var(--toggle-bg);
+            border: none;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            outline: none;
+        }
+
+        .theme-toggle-btn svg {
+            width: 20px;
+            height: 20px;
+            fill: var(--text-main);
+        }
+
+        .hero {
+            padding: 90px 0 60px 0;
+            text-align: center;
+            max-width: 850px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 46px;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 12px;
+            letter-spacing: -1px;
+        }
+
+        .sub-headline {
+            font-size: 22px;
+            font-weight: 600;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 30px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            padding: 40px 0;
+        }
+
+        .feature-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border);
+            padding: 32px;
+            border-radius: 8px;
+            text-align: left;
+        }
+
+        .feature-card h3 {
+            font-size: 20px;
+            margin-bottom: 12px;
+            color: var(--accent);
+        }
+
+        .feature-card p {
+            color: var(--text-muted);
+            font-size: 15px;
+        }
+
+        footer {
+            margin-top: 60px;
+            padding: 40px 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        footer a {
+            color: var(--text-muted);
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        footer a:hover {
+            color: var(--accent);
+        }
+
+        .divider {
+            margin: 0 5px;
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <header><div class="logo">Agency<span>Calc</span></div></header>
+        <header>
+            <div class="brand">
+                <!-- <img src="logo.png" alt="AgencyCalc Pro Logo" class="logo-img"> -->
+                <div class="logo-text">Agency<span>Calc Pro</span></div>
+            </div>
+            <!-- Theme Toggle Target Button -->
+            <button class="theme-toggle-btn" id="themeToggle" aria-label="Toggle light/dark mode">
+                <svg id="themeIcon" viewBox="0 0 24 24">
+                    <!-- Sun Icon Path by Default -->
+                    <path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1zM5.99 4.58c-.39-.39-1.03-.39-1.41 0s-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41L5.99 4.58zm12.37 12.37c-.39-.39-1.03-.39-1.41 0s-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41l-1.06-1.06zm1.06-12.37c-.39-.39-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06c.39-.38.39-1.02 0-1.41zM7.05 18.01c-.39-.39-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06c.39-.39.39-1.03 0-1.41z"/>
+                </svg>
+            </button>
+        </header>
+        
         <section class="hero">
-            <h1>Automate Your UK Recruitment Compliance & Core Margins</h1>
-            <p>The algorithmic payroll and computational intelligence engine built to manage precision dynamic margins, automated 12-week Agency Worker Regulations track metrics, and exact statutory Employer National Insurance contributions.</p>
-            <a href="#" class="cta-btn">Launch Calculator</a>
+            <h1>The Complete CPQ (Configure, Price, Quote) Platform for Global Recruitment Agencies</h1>
+            <div class="sub-headline">Recruitment Margin Tool</div>
+            <p>AgencyCalc Pro helps recruitment agencies configure statutory payroll assumptions, price assignments accurately, and quote clients with clear cost and margin breakdowns. It brings pay rates, employment costs, statutory deductions, invoice tax treatment, agency margin, and proposal generation into one practical CPQ (Configure, Price, Quote) workspace built for international staffing and recruitment teams.</p>
         </section>
+
         <section class="features">
             <div class="feature-card">
-                <h3>Margin Computation</h3>
-                <p>Execute precise reverse and forward payroll models instantly. Compute exact gross margins, net values, and overhead allocations seamlessly.</p>
+                <h3>1. Configure</h3>
+                <p>Set up global or local statutory payroll assumptions, business operational rules, regional employment on-costs, and admin-managed system defaults perfectly matched to any territory your agency serves.</p>
             </div>
             <div class="feature-card">
-                <h3>AWR 12-Week Compliance</h3>
-                <p>Track qualifying intervals programmatically. Prevent compliance failures with automated timeline monitoring across unique assignments.</p>
+                <h3>2. Price</h3>
+                <p>Model worker pay variables and calculate target bill/charge rates seamlessly using built-in pay-led or charge-led calculations. Keep perfect track of core agency margins and shift modeling data.</p>
             </div>
             <div class="feature-card">
-                <h3>Statutory Protections</h3>
-                <p>Calculate dynamic Employer NI thresholds, pension optics, and complex apprenticeship levies with zero overhead variance.</p>
+                <h3>3. Quote</h3>
+                <p>Instantly generate quote-ready outputs, proposal documentation workflows, client-facing financial presentations, and structured data exports with automated threshold and margin safety checks.</p>
             </div>
         </section>
+
         <footer>
-            <p>&copy; 2026 AgencyCalc. All rights reserved.</p>
-            <p style="margin-top: 10px;"><a href="/terms.html">Terms of Use</a> | <a href="/privacy.html">Privacy Policy</a></p>
+            <p>&copy; 2026 AgencyCalc Pro. All rights reserved.</p>
+            <p style="margin-top: 10px;">
+                <a href="/terms.html">Terms of Use</a>
+                <span class="divider">|</span>
+                <a href="/privacy.html">Privacy Policy</a>
+            </p>
         </footer>
     </div>
+
+    <!-- Active State Toggle Script Logic -->
+    <script>
+        const toggleBtn = document.getElementById('themeToggle');
+        const themeIcon = document.getElementById('themeIcon');
+        
+        // Inline SVG paths for clean presentation swapping
+        const sunPath = `M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1zM5.99 4.58c-.39-.39-1.03-.39-1.41 0s-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41L5.99 4.58zm12.37 12.37c-.39-.39-1.03-.39-1.41 0s-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41l-1.06-1.06zm1.06-12.37c-.39-.39-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06c.39-.38.39-1.02 0-1.41zM7.05 18.01c-.39-.39-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06c.39-.39.39-1.03 0-1.41z`;
+        const moonPath = `M12.3 22h-.1c-5.5 0-10-4.5-10-10 0-4.8 3.5-8.9 8.2-9.8.6-.1 1.2.3 1.3.9.1.6-.2 1.2-.8 1.4-3.5 1.3-5.8 4.7-5.8 8.5 0 4.4 3.6 8 8 8 3.8 0 7.2-2.3 8.5-5.8.2-.6.8-.9 1.4-.8.6.1 1 .7.9 1.3-.9 4.7-5 8.2-9.8 8.3z`;
+
+        // Check for saved preference, otherwise fallback to system setting
+        const currentTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        
+        // Initialize state
+        document.documentElement.setAttribute('data-theme', currentTheme);
+        themeIcon.innerHTML = currentTheme === 'dark' ? moonPath : sunPath;
+
+        // Toggle Event Listener
+        toggleBtn.addEventListener('click', () => {
+            let theme = document.documentElement.getAttribute('data-theme');
+            if (theme === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'light');
+                themeIcon.innerHTML = sunPath;
+                localStorage.setItem('theme', 'light');
+            } else {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                themeIcon.innerHTML = moonPath;
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+    </script>
 </body>
 </html>
