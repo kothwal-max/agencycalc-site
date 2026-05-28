@@ -35,7 +35,7 @@
             background-color: var(--bg-color);
             color: var(--text-main);
             line-height: 1.6;
-            padding: 0 20px;
+            padding: 0 16px;
         }
 
         .container {
@@ -43,57 +43,51 @@
             margin: 0 auto;
         }
 
+        .top-nav-bar {
+            padding: 12px 0 0 0;
+        }
+
+        .back-link {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        .back-link:hover {
+            color: var(--accent);
+        }
+
         header {
-            padding: 20px 0;
+            padding: 12px 0 16px 0;
             border-bottom: 1px solid var(--border);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            gap: 15px;
-            flex-wrap: wrap;
         }
 
         .brand {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 8px;
             text-decoration: none;
         }
 
         .logo-img {
-            height: 34px;
+            height: 32px;
             width: auto;
             object-fit: contain;
             display: block;
         }
 
         .logo-text {
-            font-size: 22px;
+            font-size: 20px;
             font-weight: 800;
             letter-spacing: -0.5px;
             color: var(--text-main);
-            white-space: nowrap;
         }
 
         .logo-text span {
-            color: var(--accent);
-        }
-
-        .right-nav {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-        }
-
-        .back-link {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 500;
-            white-space: nowrap;
-        }
-
-        .back-link:hover {
             color: var(--accent);
         }
 
@@ -101,31 +95,31 @@
             background-color: var(--toggle-bg);
             border: 1px solid var(--border);
             cursor: pointer;
-            width: 40px;
-            height: 40px;
+            width: 32px;
+            height: 32px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             outline: none;
-            font-size: 18px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            font-size: 14px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
         }
 
         .content-body {
             max-width: 750px;
-            margin: 40px auto;
+            margin: 30px auto;
         }
 
         h1 { color: var(--text-main); font-size: 26px; margin-bottom: 8px; border-bottom: 2px solid var(--border); padding-bottom: 12px; font-weight: 800; letter-spacing: -0.5px;}
         h2 { color: var(--text-main); font-size: 18px; margin-top: 24px; margin-bottom: 12px; font-weight: 700; }
-        p { color: var(--text-muted); margin-bottom: 16px; font-size: 15px; }
-        ul { margin-bottom: 16px; padding-left: 20px; color: var(--text-muted); font-size: 15px; }
+        p { color: var(--text-muted); margin-bottom: 16px; font-size: 14px; }
+        ul { margin-bottom: 16px; padding-left: 20px; color: var(--text-muted); font-size: 14px; }
         li { margin-bottom: 8px; }
 
         footer {
             margin-top: 40px;
-            padding: 30px 0;
+            padding: 24px 0;
             border-top: 1px solid var(--border);
             text-align: center;
             font-size: 13px;
@@ -134,30 +128,48 @@
 
         @media (min-width: 768px) {
             body { padding: 0 40px; }
+            .top-nav-bar { display: none; }
+            header { padding: 20px 0; }
+            .logo-img { height: 38px; gap: 12px; }
             .logo-text { font-size: 24px; }
-            .logo-img { height: 38px; }
-            .back-link { font-size: 15px; gap: 20px; }
-            .theme-toggle-btn { width: 44px; height: 44px; font-size: 20px; }
+            .theme-toggle-btn { width: 40px; height: 40px; font-size: 18px; }
+            
+            header::after {
+                content: '← Back';
+                order: 2;
+                font-size: 15px;
+                font-weight: 500;
+                color: var(--text-muted);
+                cursor: pointer;
+                margin-left: auto;
+                margin-right: 20px;
+            }
+            header:hover::after { color: var(--accent); }
+            .desktop-link-trigger { position: absolute; right: 80px; top: 22px; width: 100px; height: 40px; z-index: 10; }
+
             .content-body { margin: 60px auto; }
             h1 { font-size: 32px; }
-            h2 { font-size: 20px; }
+            h2 { font-size: 20px; p { font-size: 15px; } ul { font-size: 15px; } }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <header>
+        <div class="top-nav-bar">
+            <a href="/" class="back-link">&larr; Back</a>
+        </div>
+
+        <header style="position: relative;">
+            <a href="/" class="desktop-link-trigger" aria-hidden="true" style="display:none;"></a>
+            
             <a href="/" class="brand">
                 <img id="siteLogo" alt="AgencyCalc Pro Logo" class="logo-img">
                 <div class="logo-text">Agency<span>Calc Pro</span></div>
             </a>
             
-            <div class="right-nav">
-                <a href="/" class="back-link">&larr; Back to Home</a>
-                <button class="theme-toggle-btn" id="themeToggle" aria-label="Toggle light/dark mode">
-                    <span id="themeIcon">☀️</span>
-                </button>
-            </div>
+            <button class="theme-toggle-btn" id="themeToggle" aria-label="Toggle light/dark mode" style="order: 3;">
+                <span id="themeIcon">☀️</span>
+            </button>
         </header>
         
         <div class="content-body">
@@ -201,6 +213,10 @@
         const themeIcon = document.getElementById('themeIcon');
         const siteLogo = document.getElementById('siteLogo');
         
+        if(window.innerWidth >= 768) {
+            document.querySelector('.desktop-link-trigger').style.display = 'block';
+        }
+
         const sunIcon = "☀️";
         const moonIcon = "🌙";
 
@@ -210,7 +226,8 @@
         themeIcon.textContent = currentTheme === 'dark' ? sunIcon : moonIcon;
         siteLogo.setAttribute('src', currentTheme === 'dark' ? 'logo-dark.png' : 'logo-light.png');
 
-        toggleBtn.addEventListener('click', () => {
+        toggleBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
             let theme = document.documentElement.getAttribute('data-theme');
             if (theme === 'dark') {
                 document.documentElement.setAttribute('data-theme', 'light');
