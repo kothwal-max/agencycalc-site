@@ -43,23 +43,8 @@
             margin: 0 auto;
         }
 
-        .top-nav-bar {
-            padding: 12px 0 0 0;
-        }
-
-        .back-link {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-size: 13px;
-            font-weight: 500;
-        }
-
-        .back-link:hover {
-            color: var(--accent);
-        }
-
         header {
-            padding: 12px 0 16px 0;
+            padding: 16px 0;
             border-bottom: 1px solid var(--border);
             display: flex;
             justify-content: space-between;
@@ -91,19 +76,42 @@
             color: var(--accent);
         }
 
+        /* Far-right action control grouping */
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .back-link {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        .back-link:hover {
+            color: var(--accent);
+        }
+
         .theme-toggle-btn {
             background-color: var(--toggle-bg);
             border: 1px solid var(--border);
             cursor: pointer;
-            width: 32px;
-            height: 32px;
+            width: 28px;
+            height: 28px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             outline: none;
-            font-size: 14px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            font-size: 12px;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+        }
+
+        .theme-toggle-btn:hover {
+            transform: scale(1.05);
         }
 
         .content-body {
@@ -128,25 +136,12 @@
 
         @media (min-width: 768px) {
             body { padding: 0 40px; }
-            .top-nav-bar { display: none; }
             header { padding: 20px 0; }
             .logo-img { height: 38px; gap: 12px; }
             .logo-text { font-size: 24px; }
-            .theme-toggle-btn { width: 40px; height: 40px; font-size: 18px; }
-            
-            header::after {
-                content: '← Back';
-                order: 2;
-                font-size: 15px;
-                font-weight: 500;
-                color: var(--text-muted);
-                cursor: pointer;
-                margin-left: auto;
-                margin-right: 20px;
-            }
-            header:hover::after { color: var(--accent); }
-            .desktop-link-trigger { position: absolute; right: 80px; top: 22px; width: 100px; height: 40px; z-index: 10; }
-
+            .back-link { font-size: 15px; }
+            .header-actions { gap: 20px; }
+            .theme-toggle-btn { width: 34px; height: 34px; font-size: 15px; }
             .content-body { margin: 60px auto; }
             h1 { font-size: 32px; }
             h2 { font-size: 20px; p { font-size: 15px; } ul { font-size: 15px; } }
@@ -155,21 +150,18 @@
 </head>
 <body>
     <div class="container">
-        <div class="top-nav-bar">
-            <a href="/" class="back-link">&larr; Back</a>
-        </div>
-
-        <header style="position: relative;">
-            <a href="/" class="desktop-link-trigger" aria-hidden="true" style="display:none;"></a>
-            
+        <header>
             <a href="/" class="brand">
                 <img id="siteLogo" alt="AgencyCalc Pro Logo" class="logo-img">
                 <div class="logo-text">Agency<span>Calc Pro</span></div>
             </a>
             
-            <button class="theme-toggle-btn" id="themeToggle" aria-label="Toggle light/dark mode" style="order: 3;">
-                <span id="themeIcon">☀️</span>
-            </button>
+            <div class="header-actions">
+                <a href="/" class="back-link">&larr; Back</a>
+                <button class="theme-toggle-btn" id="themeToggle" aria-label="Toggle light/dark mode">
+                    <span id="themeIcon">☀️</span>
+                </button>
+            </div>
         </header>
         
         <div class="content-body">
@@ -213,10 +205,6 @@
         const themeIcon = document.getElementById('themeIcon');
         const siteLogo = document.getElementById('siteLogo');
         
-        if(window.innerWidth >= 768) {
-            document.querySelector('.desktop-link-trigger').style.display = 'block';
-        }
-
         const sunIcon = "☀️";
         const moonIcon = "🌙";
 
@@ -226,8 +214,7 @@
         themeIcon.textContent = currentTheme === 'dark' ? sunIcon : moonIcon;
         siteLogo.setAttribute('src', currentTheme === 'dark' ? 'logo-dark.png' : 'logo-light.png');
 
-        toggleBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
+        toggleBtn.addEventListener('click', () => {
             let theme = document.documentElement.getAttribute('data-theme');
             if (theme === 'dark') {
                 document.documentElement.setAttribute('data-theme', 'light');
