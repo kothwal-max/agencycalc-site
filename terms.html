@@ -5,47 +5,228 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Terms of Use - AgencyCalc Pro</title>
     <style>
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif; line-height: 1.6; max-width: 750px; margin: 40px auto; padding: 0 20px; color: #334155; background-color: #f8fafc; }
-        h1 { color: #0f172a; font-size: 28px; margin-bottom: 8px; border-bottom: 2px solid #e2e8f0; padding-bottom: 12px; }
-        h2 { color: #1e293b; font-size: 18px; margin-top: 24px; margin-bottom: 12px; }
-        p { margin-bottom: 16px; }
-        ul { margin-bottom: 16px; padding-left: 20px; }
+        /* Shared CSS variables for seamless theme syncing */
+        :root {
+            --bg-color: #f8fafc;
+            --text-main: #0f172a;
+            --text-muted: #475569;
+            --accent: #0284c7;
+            --border: #e2e8f0;
+            --toggle-bg: #e2e8f0;
+            --icon-color: #0f172a;
+        }
+
+        [data-theme="dark"] {
+            --bg-color: #0f172a;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent: #0ea5e9;
+            --border: #334155;
+            --toggle-bg: #334155;
+            --icon-color: #f8fafc;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 0 20px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        /* Identical Header Architecture */
+        header {
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo-img {
+            height: 38px;
+            width: auto;
+            object-fit: contain;
+            display: block;
+        }
+
+        .logo-text {
+            font-size: 24px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            color: var(--text-main);
+        }
+
+        .logo-text span {
+            color: var(--accent);
+        }
+
+        .right-nav {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .back-link {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+        }
+
+        .back-link:hover {
+            color: var(--accent);
+        }
+
+        .theme-toggle-btn {
+            background-color: var(--toggle-bg);
+            border: 1px solid var(--border);
+            cursor: pointer;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            outline: none;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .theme-toggle-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .theme-toggle-btn svg {
+            width: 20px;
+            height: 20px;
+            fill: var(--icon-color);
+        }
+
+        /* Content Container */
+        .content-body {
+            max-width: 750px;
+            margin: 60px auto;
+        }
+
+        h1 { color: var(--text-main); font-size: 32px; margin-bottom: 8px; border-bottom: 2px solid var(--border); padding-bottom: 12px; font-weight: 800; letter-spacing: -0.5px;}
+        h2 { color: var(--text-main); font-size: 20px; margin-top: 32px; margin-bottom: 12px; font-weight: 700; }
+        p { color: var(--text-muted); margin-bottom: 16px; }
+        ul { margin-bottom: 16px; padding-left: 20px; color: var(--text-muted); }
         li { margin-bottom: 8px; }
-        .back-link { display: inline-block; margin-bottom: 20px; color: #0ea5e9; text-decoration: none; font-weight: 500; }
-        .back-link:hover { text-decoration: underline; }
+
+        footer {
+            margin-top: 60px;
+            padding: 40px 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            font-size: 14px;
+            color: var(--text-muted);
+        }
     </style>
 </head>
 <body>
-    <a href="/" class="back-link">&larr; Back to Home</a>
-    <h1>Terms of Use (End User License Agreement)</h1>
-    <p><strong>Last Updated: May 2026</strong></p>
-    
-    <p>Welcome to AgencyCalc Pro. This End User License Agreement ("Agreement" or "Terms") governs your access to and use of the AgencyCalc Pro application ("Application" or "Service"). By downloading, installing, or using this Application, you agree to be bound by these Terms. If you do not agree, do not install or use the Application.</p>
-    
-    <h2>1. Scope of License</h2>
-    <p>We grant you a non-transferable, non-exclusive, revocable license to use the Application on any compatible devices that you own or control, as permitted by the Usage Rules set forth in the Apple App Store Terms of Service and Google Play Terms of Service.</p>
-    
-    <h2>2. Intellectual Property & Code Protections</h2>
-    <p>The structural layout, computational modeling architecture, mathematical balancing algorithms, and user interface designs within this Application remain our exclusive intellectual property. You may not decompile, reverse-engineer, disassemble, attempt to derive the source code of, modify, or create derivative works of the Application.</p>
-    
-    <h2>3. Multi-Jurisdictional Calculations & Disclaimer</h2>
-    <p>AgencyCalc Pro is a Configure, Price, Quote (CPQ) platform designed to allow users to manually input localized statutory payroll assumptions, tax configurations, and employment costs. <strong>All calculations, pricing models, and margin estimations generated serve exclusively as validation heuristics.</strong> They do not constitute formal global legal financial certifications, definitive accounting audits, or official tax counsel. Users bear sole responsibility for verifying all computational outputs against local statutory parameters and regulatory frameworks within their specific territory.</p>
-    
-    <h2>4. Limitation of Liability & App Store Exclusions</h2>
-    <p>To the maximum extent permitted by applicable law, AgencyCalc Pro shall not be liable for any financial losses, compliance failures, pricing inaccuracies, or incidental damages resulting from your use of the Application. You explicitly acknowledge that:</p>
-    <ul>
-        <li>Apple Inc. and Google LLC have absolutely no obligation whatsoever to furnish any maintenance and support services with respect to the Application.</li>
-        <li>In the event of any failure of the Application to conform to any applicable warranty, any liability is strictly limited to the application platform, and Apple/Google will have no other warranty obligation whatsoever.</li>
-        <li>Apple and Google are not responsible for addressing any claims relating to the Application, including product liability claims, consumer protection claims, or intellectual property infringement claims.</li>
-    </ul>
-    
-    <h2>5. Third-Party Beneficiary</h2>
-    <p>You acknowledge and agree that Apple and Google, and their subsidiaries, are third-party beneficiaries of this Agreement. Upon your acceptance of these Terms, Apple and Google will have the right (and will be deemed to have accepted the right) to enforce this Agreement against you as a third-party beneficiary thereof.</p>
+    <div class="container">
+        <header>
+            <a href="/" class="brand">
+                <img id="siteLogo" src="logo-light.png" alt="AgencyCalc Pro Logo" class="logo-img">
+                <div class="logo-text">Agency<span>Calc Pro</span></div>
+            </a>
+            
+            <div class="right-nav">
+                <a href="/" class="back-link">&larr; Back to Home</a>
+                <button class="theme-toggle-btn" id="themeToggle" aria-label="Toggle light/dark mode">
+                    <svg id="themeIcon" viewBox="0 0 24 24">
+                        <path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5z"/>
+                    </svg>
+                </button>
+            </div>
+        </header>
+        
+        <div class="content-body">
+            <h1>Terms of Use (End User License Agreement)</h1>
+            <p><strong>Last Updated: May 2026</strong></p>
+            
+            <p>Welcome to AgencyCalc Pro. This End User License Agreement ("Agreement" or "Terms") governs your access to and use of the AgencyCalc Pro application ("Application" or "Service"). By downloading, installing, or using this Application, you agree to be bound by these Terms. If you do not agree, do not install or use the Application.</p>
+            
+            <h2>1. Scope of License</h2>
+            <p>We grant you a non-transferable, non-exclusive, revocable license to use the Application on any compatible devices that you own or control, as permitted by the Usage Rules set forth in the Apple App Store Terms of Service and Google Play Terms of Service.</p>
+            
+            <h2>2. Intellectual Property & Code Protections</h2>
+            <p>The structural layout, computational modeling architecture, mathematical balancing algorithms, and user interface designs within this Application remain our exclusive intellectual property. You may not decompile, reverse-engineer, disassemble, attempt to derive the source code of, modify, or create derivative works of the Application.</p>
+            
+            <h2>3. Multi-Jurisdictional Calculations & Disclaimer</h2>
+            <p>AgencyCalc Pro is a Configure, Price, Quote (CPQ) platform designed to allow users to manually input localized statutory payroll assumptions, tax configurations, and employment costs. <strong>All calculations, pricing models, and margin estimations generated serve exclusively as validation heuristics.</strong> They do not constitute formal global legal financial certifications, definitive accounting audits, or official tax counsel. Users bear sole responsibility for verifying all computational outputs against local statutory parameters and regulatory frameworks within their specific territory.</p>
+            
+            <h2>4. Limitation of Liability & App Store Exclusions</h2>
+            <p>To the maximum extent permitted by applicable law, AgencyCalc Pro shall not be liable for any financial losses, compliance failures, pricing inaccuracies, or incidental damages resulting from your use of the Application. You explicitly acknowledge that:</p>
+            <ul>
+                <li>Apple Inc. and Google LLC have absolutely no obligation whatsoever to furnish any maintenance and support services with respect to the Application.</li>
+                <li>In the event of any failure of the Application to conform to any applicable warranty, any liability is strictly limited to the application platform, and Apple/Google will have no other warranty obligation whatsoever.</li>
+                <li>Apple and Google are not responsible for addressing any claims relating to the Application, including product liability claims, consumer protection claims, or intellectual property infringement claims.</li>
+            </ul>
+            
+            <h2>5. Third-Party Beneficiary</h2>
+            <p>You acknowledge and agree that Apple and Google, and their subsidiaries, are third-party beneficiaries of this Agreement. Upon your acceptance of these Terms, Apple and Google will have the right (and will be deemed to have accepted the right) to enforce this Agreement against you as a third-party beneficiary thereof.</p>
 
-    <h2>6. Legal Compliance & Sanctions</h2>
-    <p>You represent and warrant that (i) you are not located in a country that is subject to a U.S. Government embargo, or that has been designated by the U.S. Government as a "terrorist supporting" country; and (ii) you are not listed on any U.S. Government list of prohibited or restricted parties.</p>
+            <h2>6. Legal Compliance & Sanctions</h2>
+            <p>You represent and warrant that (i) you are not located in a country that is subject to a U.S. Government embargo, or that has been designated by the U.S. Government as a "terrorist supporting" country; and (ii) you are not listed on any U.S. Government list of prohibited or restricted parties.</p>
 
-    <h2>7. Product Support & Contact</h2>
-    <p>For questions, support requests, or operational inquiries regarding this CPQ platform, please contact our team directly at <strong>upstic25@gmail.com</strong>.</p>
+            <h2>7. Product Support & Contact</h2>
+            <p>For questions, support requests, or operational inquiries regarding this CPQ platform, please contact our team directly at <strong>upstic25@gmail.com</strong>.</p>
+        </div>
+
+        <footer>
+            <p>&copy; 2026 AgencyCalc Pro. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        const toggleBtn = document.getElementById('themeToggle');
+        const themeIcon = document.getElementById('themeIcon');
+        const siteLogo = document.getElementById('siteLogo');
+        
+        const sunVector = `<path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1zM5.99 4.58c-.39-.39-1.03-.39-1.41 0s-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41L5.99 4.58zm12.37 12.37c-.39-.39-1.03-.39-1.41 0s-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41l-1.06-1.06zm1.06-12.37c-.39-.39-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06c.39-.38.39-1.02 0-1.41zM7.05 18.01c-.39-.39-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06c.39-.39.39-1.03 0-1.41z"/>`;
+        const moonVector = `<path d="M12.3 22h-.1c-5.5 0-10-4.5-10-10 0-4.8 3.5-8.9 8.2-9.8.6-.1 1.2.3 1.3.9.1.6-.2 1.2-.8 1.4-3.5 1.3-5.8 4.7-5.8 8.5 0 4.4 3.6 8 8 8 3.8 0 7.2-2.3 8.5-5.8.2-.6.8-.9 1.4-.8.6.1 1 .7.9 1.3-.9 4.7-5 8.2-9.8 8.3z"/>`;
+
+        const currentTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        
+        document.documentElement.setAttribute('data-theme', currentTheme);
+        themeIcon.innerHTML = currentTheme === 'dark' ? moonVector : sunVector;
+        siteLogo.src = currentTheme === 'dark' ? 'logo-light.png' : 'logo-dark.png';
+
+        toggleBtn.addEventListener('click', () => {
+            let theme = document.documentElement.getAttribute('data-theme');
+            if (theme === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'light');
+                themeIcon.innerHTML = sunVector;
+                siteLogo.src = 'logo-dark.png';
+                localStorage.setItem('theme', 'light');
+            } else {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                themeIcon.innerHTML = moonVector;
+                siteLogo.src = 'logo-light.png';
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+    </script>
 </body>
 </html>
