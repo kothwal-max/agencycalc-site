@@ -181,7 +181,7 @@
     <div class="container">
         <header>
             <div class="brand">
-                <img id="siteLogo" src="logo-dark.png" alt="AgencyCalc Pro Logo" class="logo-img">
+                <img id="siteLogo" alt="AgencyCalc Pro Logo" class="logo-img">
                 <div class="logo-text">Agency<span>Calc Pro</span></div>
             </div>
             
@@ -229,26 +229,25 @@
         const sunIcon = "☀️";
         const moonIcon = "🌙";
 
-        // Establish core configuration states
         const currentTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
         
-        // Render Initial Correct State
         document.documentElement.setAttribute('data-theme', currentTheme);
         themeIcon.textContent = currentTheme === 'dark' ? sunIcon : moonIcon;
-        siteLogo.src = currentTheme === 'dark' ? 'logo-light.png' : 'logo-dark.png';
+        
+        // INVERTED INITIAL SELECTION (Swapped logo-dark and logo-light targets)
+        siteLogo.setAttribute('src', currentTheme === 'dark' ? 'logo-dark.png' : 'logo-light.png');
 
-        // Swap logical parameters smoothly upon user interaction
         toggleBtn.addEventListener('click', () => {
             let theme = document.documentElement.getAttribute('data-theme');
             if (theme === 'dark') {
                 document.documentElement.setAttribute('data-theme', 'light');
                 themeIcon.textContent = moonIcon;
-                siteLogo.src = 'logo-dark.png'; // Light background uses dark logo file
+                siteLogo.setAttribute('src', 'logo-light.png'); // Swapped target
                 localStorage.setItem('theme', 'light');
             } else {
                 document.documentElement.setAttribute('data-theme', 'dark');
                 themeIcon.textContent = sunIcon;
-                siteLogo.src = 'logo-light.png'; // Dark background uses light logo file
+                siteLogo.setAttribute('src', 'logo-dark.png'); // Swapped target
                 localStorage.setItem('theme', 'dark');
             }
         });
