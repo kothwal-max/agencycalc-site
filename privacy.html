@@ -5,45 +5,226 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Privacy Policy - AgencyCalc Pro</title>
     <style>
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif; line-height: 1.6; max-width: 750px; margin: 40px auto; padding: 0 20px; color: #334155; background-color: #f8fafc; }
-        h1 { color: #0f172a; font-size: 28px; margin-bottom: 8px; border-bottom: 2px solid #e2e8f0; padding-bottom: 12px; }
-        h2 { color: #1e293b; font-size: 18px; margin-top: 24px; margin-bottom: 12px; }
-        p { margin-bottom: 16px; }
-        ul { margin-bottom: 16px; padding-left: 20px; }
+        /* Shared CSS variables for seamless theme syncing */
+        :root {
+            --bg-color: #f8fafc;
+            --text-main: #0f172a;
+            --text-muted: #475569;
+            --accent: #0284c7;
+            --border: #e2e8f0;
+            --toggle-bg: #e2e8f0;
+            --icon-color: #0f172a;
+        }
+
+        [data-theme="dark"] {
+            --bg-color: #0f172a;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent: #0ea5e9;
+            --border: #334155;
+            --toggle-bg: #334155;
+            --icon-color: #f8fafc;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 0 20px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        /* Identical Header Architecture */
+        header {
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo-img {
+            height: 38px;
+            width: auto;
+            object-fit: contain;
+            display: block;
+        }
+
+        .logo-text {
+            font-size: 24px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            color: var(--text-main);
+        }
+
+        .logo-text span {
+            color: var(--accent);
+        }
+
+        .right-nav {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .back-link {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+        }
+
+        .back-link:hover {
+            color: var(--accent);
+        }
+
+        .theme-toggle-btn {
+            background-color: var(--toggle-bg);
+            border: 1px solid var(--border);
+            cursor: pointer;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            outline: none;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .theme-toggle-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .theme-toggle-btn svg {
+            width: 20px;
+            height: 20px;
+            fill: var(--icon-color);
+        }
+
+        /* Content Container */
+        .content-body {
+            max-width: 750px;
+            margin: 60px auto;
+        }
+
+        h1 { color: var(--text-main); font-size: 32px; margin-bottom: 8px; border-bottom: 2px solid var(--border); padding-bottom: 12px; font-weight: 800; letter-spacing: -0.5px;}
+        h2 { color: var(--text-main); font-size: 20px; margin-top: 32px; margin-bottom: 12px; font-weight: 700; }
+        p { color: var(--text-muted); margin-bottom: 16px; }
+        ul { margin-bottom: 16px; padding-left: 20px; color: var(--text-muted); }
         li { margin-bottom: 8px; }
-        .back-link { display: inline-block; margin-bottom: 20px; color: #0ea5e9; text-decoration: none; font-weight: 500; }
-        .back-link:hover { text-decoration: underline; }
+
+        footer {
+            margin-top: 60px;
+            padding: 40px 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            font-size: 14px;
+            color: var(--text-muted);
+        }
     </style>
 </head>
 <body>
-    <a href="/" class="back-link">&larr; Back to Home</a>
-    <h1>Privacy Policy</h1>
-    <p><strong>Last Updated: May 2026</strong></p>
-    
-    <p>At AgencyCalc Pro, we respect your data sovereignty and are committed to protecting your privacy transparently across our mobile and web applications. This Privacy Policy explains our data processing boundaries and your rights under global privacy frameworks.</p>
-    
-    <h2>1. Data Sovereignty & Local Processing</h2>
-    <p>AgencyCalc Pro is a Configure, Price, Quote (CPQ) platform engineered with a strict local-execution infrastructure. All calculations, worker pay details, client pricing structures, tax configurations, and operational recruitment margin variables you input into the application are processed <strong>entirely inside your local device or browser memory space</strong>. This sensitive operational data is never transmitted to, stored on, or persisted across our central servers.</p>
-    
-    <h2>2. Information Collected Automatically</h2>
-    <p>When you download, update, or interact with our Application, standard system metrics may be processed by our underlying app distribution and hosting services (such as GitHub Pages, Apple App Store Connect, or Google Play Console). This technical telemetry is completely anonymous and includes:</p>
-    <ul>
-        <li>Core device characteristics (device model, operating system version, and region settings).</li>
-        <li>Basic system interaction performance details (such as app crashes, launch diagnostics, or system latency metrics).</li>
-        <li>Standard network edge hosting metadata (such as IP addresses required by server routers strictly to safely transmit data packets).</li>
-    </ul>
+    <div class="container">
+        <header>
+            <a href="/" class="brand">
+                <img id="siteLogo" src="logo-light.png" alt="AgencyCalc Pro Logo" class="logo-img">
+                <div class="logo-text">Agency<span>Calc Pro</span></div>
+            </a>
+            
+            <div class="right-nav">
+                <a href="/" class="back-link">&larr; Back to Home</a>
+                <button class="theme-toggle-btn" id="themeToggle" aria-label="Toggle light/dark mode">
+                    <svg id="themeIcon" viewBox="0 0 24 24">
+                        <path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5z"/>
+                    </svg>
+                </button>
+            </div>
+        </header>
+        
+        <div class="content-body">
+            <h1>Privacy Policy</h1>
+            <p><strong>Last Updated: May 2026</strong></p>
+            
+            <p>At AgencyCalc Pro, we respect your data sovereignty and are committed to protecting your privacy transparently across our mobile and web applications. This Privacy Policy explains our data processing boundaries and your rights under global privacy frameworks.</p>
+            
+            <h2>1. Data Sovereignty & Local Processing</h2>
+            <p>AgencyCalc Pro is a Configure, Price, Quote (CPQ) platform engineered with a strict local-execution infrastructure. All calculations, worker pay details, client pricing structures, tax configurations, and operational recruitment margin variables you input into the application are processed <strong>entirely inside your local device or browser memory space</strong>. This sensitive operational data is never transmitted to, stored on, or persisted across our central servers.</p>
+            
+            <h2>2. Information Collected Automatically</h2>
+            <p>When you download, update, or interact with our Application, standard system metrics may be processed by our underlying app distribution and hosting services (such as GitHub Pages, Apple App Store Connect, or Google Play Console). This technical telemetry is completely anonymous and includes:</p>
+            <ul>
+                <li>Core device characteristics (device model, operating system version, and region settings).</li>
+                <li>Basic system interaction performance details (such as app crashes, launch diagnostics, or system latency metrics).</li>
+                <li>Standard network edge hosting metadata (such as IP addresses required by server routers strictly to safely transmit data packets).</li>
+            </ul>
 
-    <h2>3. Data Deletion and Data Protection Rights</h2>
-    <p>Because all of your active operational calculation profiles are cached entirely in your local device storage, you can securely wipe all associated business logic and saved quotes at any time simply by clearing the application's local database cache, deleting your browser cookies, or uninstalling the app from your device.</p>
-    <p>Under global data legislation (including GDPR and CCPA), you preserve the complete right to request access to, correction of, or permanent deletion of any personal communications or metadata you send to us directly.</p>
+            <h2>3. Data Deletion and Data Protection Rights</h2>
+            <p>Because all of your active operational calculation profiles are cached entirely in your local device storage, you can securely wipe all associated business logic and saved quotes at any time simply by clearing the application's local database cache, deleting your browser cookies, or uninstalling the app from your device.</p>
+            <p>Under global data legislation (including GDPR and CCPA), you preserve the complete right to request access to, correction of, or permanent deletion of any personal communications or metadata you send to us directly.</p>
 
-    <h2>4. Children's Privacy Safeguards</h2>
-    <p>Our CPQ application tools are strictly intended for professional recruitment, staffing, and corporate workflow management. We do not knowingly collect, target, or process any identifying datasets from children under the age of 13. If you believe a minor has initiated contact data with us, notify our team to remove the records.</p>
+            <h2>4. Children's Privacy Safeguards</h2>
+            <p>Our CPQ application tools are strictly intended for professional recruitment, staffing, and corporate workflow management. We do not knowingly collect, target, or process any identifying datasets from children under the age of 13. If you believe a minor has initiated contact data with us, notify our team to remove the records.</p>
 
-    <h2>5. Revisions and Policy Updates</h2>
-    <p>We preserve our operational authority to update this privacy framework to match moving app store criteria or international legal variations. Any structural modifications will be announced by flashing an updated "Last Updated" timestamp right at the top of this page.</p>
+            <h2>5. Revisions and Policy Updates</h2>
+            <p>We preserve our operational authority to update this privacy framework to match moving app store criteria or international legal variations. Any structural modifications will be announced by flashing an updated "Last Updated" timestamp right at the top of this page.</p>
 
-    <h2>6. Contact Infrastructure</h2>
-    <p>To exercise your privacy access privileges, file structural data questions, or communicate with our data coordinators, please route updates directly to our technical inbox at <strong>upstic25@gmail.com</strong>.</p>
+            <h2>6. Contact Infrastructure</h2>
+            <p>To exercise your privacy access privileges, file structural data questions, or communicate with our data coordinators, please route updates directly to our technical inbox at <strong>upstic25@gmail.com</strong>.</p>
+        </div>
+
+        <footer>
+            <p>&copy; 2026 AgencyCalc Pro. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        const toggleBtn = document.getElementById('themeToggle');
+        const themeIcon = document.getElementById('themeIcon');
+        const siteLogo = document.getElementById('siteLogo');
+        
+        const sunVector = `<path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1zM5.99 4.58c-.39-.39-1.03-.39-1.41 0s-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41L5.99 4.58zm12.37 12.37c-.39-.39-1.03-.39-1.41 0s-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41l-1.06-1.06zm1.06-12.37c-.39-.39-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06c.39-.38.39-1.02 0-1.41zM7.05 18.01c-.39-.39-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06c.39-.39.39-1.03 0-1.41z"/>`;
+        const moonVector = `<path d="M12.3 22h-.1c-5.5 0-10-4.5-10-10 0-4.8 3.5-8.9 8.2-9.8.6-.1 1.2.3 1.3.9.1.6-.2 1.2-.8 1.4-3.5 1.3-5.8 4.7-5.8 8.5 0 4.4 3.6 8 8 8 3.8 0 7.2-2.3 8.5-5.8.2-.6.8-.9 1.4-.8.6.1 1 .7.9 1.3-.9 4.7-5 8.2-9.8 8.3z"/>`;
+
+        const currentTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        
+        document.documentElement.setAttribute('data-theme', currentTheme);
+        themeIcon.innerHTML = currentTheme === 'dark' ? moonVector : sunVector;
+        siteLogo.src = currentTheme === 'dark' ? 'logo-light.png' : 'logo-dark.png';
+
+        toggleBtn.addEventListener('click', () => {
+            let theme = document.documentElement.getAttribute('data-theme');
+            if (theme === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'light');
+                themeIcon.innerHTML = sunVector;
+                siteLogo.src = 'logo-dark.png';
+                localStorage.setItem('theme', 'light');
+            } else {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                themeIcon.innerHTML = moonVector;
+                siteLogo.src = 'logo-light.png';
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+    </script>
 </body>
 </html>
