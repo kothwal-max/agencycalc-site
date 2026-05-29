@@ -195,6 +195,48 @@
             resize: vertical;
         }
 
+        .scope-options {
+            display: grid;
+            gap: 8px;
+        }
+
+        .scope-option {
+            width: 100%;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            background: var(--bg-color);
+            color: var(--text-main);
+            cursor: pointer;
+            font: inherit;
+            font-size: 14px;
+            line-height: 1.35;
+            padding: 10px 12px;
+            text-align: left;
+        }
+
+        .scope-option.is-selected {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 2px rgba(14, 165, 233, 0.18);
+            font-weight: 700;
+        }
+
+        .deletion-info {
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            background: var(--bg-color);
+            padding: 12px;
+        }
+
+        .deletion-info p,
+        .deletion-info ul {
+            font-size: 13px;
+            margin-bottom: 10px;
+        }
+
+        .deletion-info li {
+            margin-bottom: 4px;
+        }
+
         footer {
             margin-top: 40px;
             padding: 24px 0;
@@ -273,15 +315,28 @@
                 <button type="button" class="btn-email" id="showDeletionForm">Request Account & Data Deletion</button>
 
                 <form class="deletion-form" id="deletionRequestForm">
+                    <div class="deletion-info">
+                        <p><strong>Request account and data deletion</strong></p>
+                        <p>You can request permanent deletion of your AgencyCalc Pro account and associated data.</p>
+                        <ul>
+                            <li>Account profile and authentication identifiers</li>
+                            <li>Saved proposal calculations and templates</li>
+                            <li>Referral, notification preference, role, and activity data</li>
+                        </ul>
+                        <p>On mobile, the pre-filled email request can open directly in your Mail app. You can also email <strong>upstic25@gmail.com</strong> from the support page and write what information you want removed.</p>
+                        <p>Some records may be retained only where legally required, such as payment, tax, fraud prevention, or store subscription records. Please send the request from your registered sign-in email address or include that email in your message so we can identify the account.</p>
+                    </div>
+
                     <label>
                         <span class="field-label">What should be removed?</span>
-                        <select class="form-control" id="deletionScope">
-                            <option>Delete my account and all associated app data</option>
-                            <option>Delete only my account profile</option>
-                            <option>Delete saved quotes and workspace data</option>
-                            <option>Delete payment/subscription support records where legally allowed</option>
-                            <option>Other data deletion request</option>
-                        </select>
+                        <input type="hidden" id="deletionScope" value="Delete my account and all associated app data">
+                        <div class="scope-options" id="deletionScopeOptions">
+                            <button type="button" class="scope-option is-selected" data-value="Delete my account and all associated app data">Account and all app data</button>
+                            <button type="button" class="scope-option" data-value="Delete only my account profile">Account profile only</button>
+                            <button type="button" class="scope-option" data-value="Delete saved quotes and workspace data">Saved quotes and workspace data</button>
+                            <button type="button" class="scope-option" data-value="Delete payment/subscription support records where legally allowed">Payment/subscription support records</button>
+                            <button type="button" class="scope-option" data-value="Other data deletion request">Other data deletion request</button>
+                        </div>
                     </label>
 
                     <label>
@@ -351,16 +406,26 @@
 
         const showDeletionForm = document.getElementById('showDeletionForm');
         const deletionRequestForm = document.getElementById('deletionRequestForm');
+        const deletionScopeInput = document.getElementById('deletionScope');
+        const deletionScopeOptions = document.querySelectorAll('.scope-option');
 
         showDeletionForm.addEventListener('click', () => {
             deletionRequestForm.classList.add('is-open');
-            document.getElementById('deletionScope').focus();
+            deletionScopeOptions[0].focus();
+        });
+
+        deletionScopeOptions.forEach((option) => {
+            option.addEventListener('click', () => {
+                deletionScopeOptions.forEach((item) => item.classList.remove('is-selected'));
+                option.classList.add('is-selected');
+                deletionScopeInput.value = option.dataset.value;
+            });
         });
 
         deletionRequestForm.addEventListener('submit', (event) => {
             event.preventDefault();
 
-            const scope = document.getElementById('deletionScope').value;
+            const scope = deletionScopeInput.value;
             const accountDetail = document.getElementById('accountDetail').value.trim();
             const requestDetails = document.getElementById('requestDetails').value.trim();
 
