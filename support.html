@@ -144,6 +144,7 @@
 
         .btn-email {
             display: inline-block;
+            border: 0;
             background-color: var(--accent);
             color: #ffffff !important;
             text-decoration: none;
@@ -152,10 +153,46 @@
             font-weight: 600;
             margin-top: 10px;
             font-size: 14px;
+            cursor: pointer;
         }
 
         .btn-email:hover {
             opacity: 0.9;
+        }
+
+        .deletion-form {
+            display: none;
+            margin-top: 18px;
+            text-align: left;
+        }
+
+        .deletion-form.is-open {
+            display: grid;
+            gap: 12px;
+        }
+
+        .field-label {
+            display: block;
+            color: var(--text-main);
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .form-control {
+            width: 100%;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            background: var(--bg-color);
+            color: var(--text-main);
+            padding: 10px 12px;
+            font: inherit;
+            font-size: 14px;
+        }
+
+        textarea.form-control {
+            min-height: 92px;
+            resize: vertical;
         }
 
         footer {
@@ -232,8 +269,33 @@
             </ol>
 
             <div class="action-box">
-                <p><strong>Want to request data deletion now?</strong> Use our pre-filled email shortcut:</p>
-                <a href="mailto:upstic25@gmail.com?subject=AgencyCalc Pro - Account Deletion Request" class="btn-email">Request Account & Data Deletion</a>
+                <p><strong>Want to request data deletion now?</strong> Choose what you want removed, then send the pre-filled email request.</p>
+                <button type="button" class="btn-email" id="showDeletionForm">Request Account & Data Deletion</button>
+
+                <form class="deletion-form" id="deletionRequestForm">
+                    <label>
+                        <span class="field-label">What should be removed?</span>
+                        <select class="form-control" id="deletionScope">
+                            <option>Delete my account and all associated app data</option>
+                            <option>Delete only my account profile</option>
+                            <option>Delete saved quotes and workspace data</option>
+                            <option>Delete payment/subscription support records where legally allowed</option>
+                            <option>Other data deletion request</option>
+                        </select>
+                    </label>
+
+                    <label>
+                        <span class="field-label">Registered email or account detail</span>
+                        <input class="form-control" id="accountDetail" type="text" placeholder="name@example.com">
+                    </label>
+
+                    <label>
+                        <span class="field-label">Additional details</span>
+                        <textarea class="form-control" id="requestDetails" placeholder="Add anything that helps identify the account or data."></textarea>
+                    </label>
+
+                    <button type="submit" class="btn-email">Open Email Request</button>
+                </form>
             </div>
 
             <h2>Data Protection and Retention Scope</h2>
@@ -285,6 +347,36 @@
                 siteLogo.setAttribute('src', 'logo-dark.png');
                 localStorage.setItem('theme', 'dark');
             }
+        });
+
+        const showDeletionForm = document.getElementById('showDeletionForm');
+        const deletionRequestForm = document.getElementById('deletionRequestForm');
+
+        showDeletionForm.addEventListener('click', () => {
+            deletionRequestForm.classList.add('is-open');
+            document.getElementById('deletionScope').focus();
+        });
+
+        deletionRequestForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+
+            const scope = document.getElementById('deletionScope').value;
+            const accountDetail = document.getElementById('accountDetail').value.trim();
+            const requestDetails = document.getElementById('requestDetails').value.trim();
+
+            const body = [
+                'Please process this AgencyCalc Pro data deletion request.',
+                '',
+                `Deletion scope: ${scope}`,
+                `Registered email or account detail: ${accountDetail || 'Not provided'}`,
+                '',
+                `Additional details: ${requestDetails || 'None provided'}`,
+                '',
+                'I understand you may need to verify account ownership before completing deletion.'
+            ].join('\n');
+
+            const mailto = `mailto:upstic25@gmail.com?subject=${encodeURIComponent('AgencyCalc Pro - Account Deletion Request')}&body=${encodeURIComponent(body)}`;
+            window.location.href = mailto;
         });
     </script>
 </body>
