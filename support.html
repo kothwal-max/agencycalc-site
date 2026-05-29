@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support & Account Deletion - AgencyCalc Pro</title>
+    <style>
+        :root {
+            --bg-color: #f8fafc;
+            --text-main: #0f172a;
+            --text-muted: #475569;
+            --accent: #0284c7;
+            --border: #e2e8f0;
+            --toggle-bg: #e2e8f0;
+        }
+
+        [data-theme="dark"] {
+            --bg-color: #0f172a;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent: #0ea5e9;
+            --border: #334155;
+            --toggle-bg: #334155;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 0 16px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        header {
+            padding: 12px 0 16px 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .logo-img {
+            height: 36px;
+            width: auto;
+            object-fit: contain;
+            display: block;
+        }
+
+        .title-stack {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.2;
+        }
+
+        .logo-text {
+            font-size: 18px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            color: var(--text-main);
+        }
+
+        .logo-text span {
+            color: var(--accent);
+        }
+
+        .logo-subtitle {
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--text-muted);
+            margin-top: 1px;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .back-link {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        .back-link:hover {
+            color: var(--accent);
+        }
+
+        .theme-toggle-btn {
+            background-color: var(--toggle-bg);
+            border: 1px solid var(--border);
+            cursor: pointer;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            outline: none;
+            font-size: 12px;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+        }
+
+        .content-body {
+            max-width: 750px;
+            margin: 30px auto;
+        }
+
+        h1 { color: var(--text-main); font-size: 26px; margin-bottom: 8px; border-bottom: 2px solid var(--border); padding-bottom: 12px; font-weight: 800; letter-spacing: -0.5px;}
+        h2 { color: var(--text-main); font-size: 18px; margin-top: 24px; margin-bottom: 12px; font-weight: 700; }
+        p { color: var(--text-muted); margin-bottom: 16px; font-size: 14px; }
+        ol, ul { margin-bottom: 16px; padding-left: 20px; color: var(--text-muted); font-size: 14px; }
+        li { margin-bottom: 8px; }
+
+        .action-box {
+            background-color: var(--toggle-bg);
+            border: 1px solid var(--border);
+            padding: 20px;
+            border-radius: 8px;
+            margin: 24px 0;
+            text-align: center;
+        }
+
+        .btn-email {
+            display: inline-block;
+            background-color: var(--accent);
+            color: #ffffff !important;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-weight: 600;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+
+        .btn-email:hover {
+            opacity: 0.9;
+        }
+
+        footer {
+            margin-top: 40px;
+            padding: 24px 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        @media (min-width: 768px) {
+            body { padding: 0 40px; }
+            header { padding: 20px 0; }
+            .logo-img { height: 42px; gap: 12px; }
+            .logo-text { font-size: 24px; }
+            .logo-subtitle { font-size: 13px; }
+            .back-link { font-size: 15px; }
+            .header-actions { gap: 20px; }
+            .theme-toggle-btn { width: 34px; height: 34px; font-size: 15px; }
+            .content-body { margin: 60px auto; }
+            h1 { font-size: 32px; }
+            h2 { font-size: 20px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="/" class="brand">
+                <img id="siteLogo" alt="AgencyCalc Pro Logo" class="logo-img">
+                <div class="title-stack">
+                    <div class="logo-text">Agency<span>Calc Pro</span></div>
+                    <div class="logo-subtitle">Recruitment Margin Tool</div>
+                </div>
+            </a>
+            
+            <div class="header-actions">
+                <a href="/" class="back-link">&larr; Back</a>
+                <button class="theme-toggle-btn" id="themeToggle" aria-label="Toggle light/dark mode">
+                    <span id="themeIcon">☀️</span>
+                </button>
+            </div>
+        </header>
+        
+        <div class="content-body">
+            <h1>Help & Support Platform</h1>
+            <p>Welcome to the AgencyCalc Pro Support Desk. We are fully committed to resolving platform operation queries, workspace configurations, or processing compliance inquiries transparently.</p>
+            
+            <h2>Contact Technical Support</h2>
+            <p>For application troubleshooting, configurations, or operational pricing feedback, reach out directly to our help desk at <strong>upstic25@gmail.com</strong>.</p>
+
+            <hr style="border: 0; border-top: 1px solid var(--border); margin: 30px 0;">
+
+            <h1>Account & Data Deletion Hub</h1>
+            <p>In alignment with Apple App Store and Google Play data privacy regulations, AgencyCalc Pro provides a clear process to permanently delete your application user account and purge linked variables.</p>
+            
+            <h2>How to Submit a Deletion Request</h2>
+            <p>To request permanent erasure of your account tracking logs, follow these explicit instructions:</p>
+            <ol>
+                <li>Send an email request from your registered application sign-in email address directly to <strong>upstic25@gmail.com</strong>.</li>
+                <li>Ensure your message utilizes the subject header line: <strong>"AgencyCalc Pro - Account Deletion Request"</strong>.</li>
+                <li>State your active username or account details clearly to confirm identity boundaries.</li>
+            </ol>
+
+            <div class="action-box">
+                <p><strong>Want to request data deletion now?</strong> Use our pre-filled email shortcut:</p>
+                <a href="mailto:upstic25@gmail.com?subject=AgencyCalc Pro - Account Deletion Request" class="btn-email">Request Account & Data Deletion</a>
+            </div>
+
+            <h2>Data Protection and Retention Scope</h2>
+            <ul>
+                <li><strong>Purged Data Fields:</strong> Executing your request permanently strips account credentials, authentication tokens, and personal workspace metrics from our database systems.</li>
+                <li><strong>Local System Memory:</strong> Since AgencyCalc Pro processes variables locally on your device infrastructure to ensure data sovereignty, please manually wipe your phone's local storage data or clear your web browser cache to drop all saved quotes instantly.</li>
+                <li><strong>Retention Timeframes:</strong> Active user data profiles are dropped immediately upon confirmation, and background system backup logs are completely overwritten and purged within an automated 30-day rotation matrix.</li>
+            </ul>
+        </div>
+
+        <footer>
+            <p>&copy; 2026 AgencyCalc Pro. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        const toggleBtn = document.getElementById('themeToggle');
+        const themeIcon = document.getElementById('themeIcon');
+        const siteLogo = document.getElementById('siteLogo');
+        
+        const sunIcon = "☀️";
+        const moonIcon = "🌙";
+
+        const currentTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        
+        document.documentElement.setAttribute('data-theme', currentTheme);
+        themeIcon.textContent = currentTheme === 'dark' ? sunIcon : moonIcon;
+        siteLogo.setAttribute('src', currentTheme === 'dark' ? 'logo-dark.png' : 'logo-light.png');
+
+        toggleBtn.addEventListener('click', () => {
+            let theme = document.documentElement.getAttribute('data-theme');
+            if (theme === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'light');
+                themeIcon.textContent = moonIcon;
+                siteLogo.setAttribute('src', 'logo-light.png');
+                localStorage.setItem('theme', 'light');
+            } else {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                themeIcon.textContent = sunIcon;
+                siteLogo.setAttribute('src', 'logo-dark.png');
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+    </script>
+</body>
+</html>
