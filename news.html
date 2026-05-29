@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Latest News & Features - AgencyCalc Pro</title>
+    <title>Latest News - AgencyCalc Pro</title>
     <style>
         :root {
             --bg-color: #f8fafc;
@@ -46,7 +46,7 @@
         }
 
         header {
-            padding: 12px 0 16px 0;
+            padding: 16px 0;
             border-bottom: 1px solid var(--border);
             display: flex;
             justify-content: space-between;
@@ -113,89 +113,79 @@
             background-color: var(--toggle-bg);
             border: 1px solid var(--border);
             cursor: pointer;
-            width: 28px; height: 28px;
+            width: 28px;
+            height: 28px;
             border-radius: 50%;
             display: flex;
-            align-items: center; justify-content: center;
-            outline: none; font-size: 12px;
+            align-items: center;
+            justify-content: center;
+            outline: none;
+            font-size: 12px;
             box-shadow: 0 1px 2px rgba(0,0,0,0.05);
         }
 
-        .content-body {
-            max-width: 750px;
-            margin: 30px auto;
+        .theme-toggle-btn:hover {
+            transform: scale(1.05);
         }
 
-        h1 { color: var(--text-main); font-size: 26px; margin-bottom: 20px; border-bottom: 2px solid var(--border); padding-bottom: 12px; font-weight: 800; letter-spacing: -0.5px;}
-        
-        .news-card {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 24px;
-            margin-bottom: 30px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+        .hero {
+            padding: 40px 0;
+            text-align: center;
+            max-width: 850px;
+            margin: 0 auto;
         }
 
-        .news-meta {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        h1 {
+            font-size: 28px;
+            font-weight: 800;
+            line-height: 1.2;
             margin-bottom: 12px;
+            letter-spacing: -0.5px;
         }
 
-        .news-tag {
-            font-size: 13px;
+        .sub-headline {
+            font-size: 14px;
             font-weight: 700;
             color: var(--accent);
             text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .news-date {
-            font-size: 12px;
-            color: var(--text-muted);
-            font-weight: 500;
-        }
-
-        .news-card h2 {
-            font-size: 20px;
-            color: var(--text-main);
-            margin-bottom: 14px;
-            font-weight: 700;
-            letter-spacing: -0.3px;
-        }
-
-        .news-card p {
-            font-size: 14px;
-            color: var(--text-muted);
+            letter-spacing: 1px;
             margin-bottom: 20px;
+            background-color: var(--toggle-bg);
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
         }
 
-        .feature-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 14px;
-        }
-
-        .feature-item {
-            background-color: var(--bg-color);
-            border: 1px solid var(--border);
-            padding: 16px;
-            border-radius: 6px;
-        }
-
-        .feature-item strong {
-            color: var(--accent);
-            display: block;
-            font-size: 14.5px;
-            margin-bottom: 4px;
-        }
-
-        .feature-item span {
+        .hero p {
+            font-size: 15px;
             color: var(--text-muted);
-            font-size: 13.5px;
-            display: block;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            padding: 10px 0;
+        }
+
+        .feature-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border);
+            padding: 24px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.01);
+        }
+
+        .feature-card h3 {
+            font-size: 18px;
+            margin-bottom: 8px;
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .feature-card p {
+            color: var(--text-muted);
+            font-size: 14px;
             line-height: 1.5;
         }
 
@@ -225,9 +215,14 @@
             .logo-text { font-size: 24px; }
             .logo-subtitle { font-size: 13px; }
             .back-link { font-size: 15px; }
+            .header-actions { gap: 20px; }
             .theme-toggle-btn { width: 34px; height: 34px; font-size: 15px; }
-            .content-body { margin: 60px auto; }
-            h1 { font-size: 32px; }
+            .hero { padding: 80px 0 60px 0; }
+            h1 { font-size: 44px; }
+            .sub-headline { font-size: 16px; margin-bottom: 30px; }
+            .hero p { font-size: 18px; }
+            .features { gap: 24px; padding: 40px 0; }
+            .feature-card { padding: 32px; }
         }
     </style>
 </head>
@@ -250,45 +245,38 @@
             </div>
         </header>
         
-        <div class="content-body">
-            <h1>Latest Platform News & Updates</h1>
-            
-            <div class="news-card">
-                <div class="news-meta">
-                    <span class="news-tag">Global Release v2.4.0</span>
-                    <span class="news-date">May 2026</span>
-                </div>
-                <h2>Multi-Jurisdictional CPQ Engine Upgrades Live</h2>
-                <p>We are excited to announce the deployment of our global calculation engine updates. This framework provides cross-border recruiters, staffing agencies, and workspace managers with complete structural modeling flexibility for any legal territory:</p>
-                
-                <div class="feature-grid">
-                    <div class="feature-item">
-                        <strong>1. Custom Statutory Asset Presets</strong>
-                        <span>Configure and override regional tax thresholds, operational rule matrices, and territory-specific on-costs within an isolated settings profile.</span>
-                    </div>
-                    <div class="feature-item">
-                        <strong>2. Bidirectional Margin Logic Architecture</strong>
-                        <span>Seamlessly transition between pay-led and charge-led calculation schemas. Instantly determine exact target bill rates based on raw worker cost boundaries.</span>
-                    </div>
-                    <div class="feature-item">
-                        <strong>3. Dynamic Compliance Threshold Alerts</strong>
-                        <span>Establish automated safety checks to cross-verify client quotes against local minimum wage standards and dynamic shift eligibility parameters.</span>
-                    </div>
-                    <div class="feature-item">
-                        <strong>4. Standardized Statutory Contribution Modeling</strong>
-                        <span>A flexible, generic computational engine built to process employer payroll contributions, insurance loads, and holiday accrual variables on-device.</span>
-                    </div>
-                    <div class="feature-item">
-                        <strong>5. Pre-Employment Verification Checklist Audit</strong>
-                        <span>Configure mandatory industry compliance rules and candidate assessment criteria straight into the pricing and quotation workflow pipeline.</span>
-                    </div>
-                    <div class="feature-item">
-                        <strong>6. Global Safety Margin Floor Rules</strong>
-                        <span>Receive instant interface warnings if a custom transaction model sinks below your organization's required profit target metrics.</span>
-                    </div>
-                </div>
+        <section class="hero">
+            <div class="sub-headline">Global Release Update v2.4.0</div>
+            <h1>Multi-Jurisdictional CPQ Engine Upgrades Are Live</h1>
+            <p>Our calculation architecture has been completely updated. The core engine now provides cross-border recruiters, enterprise staffing agencies, and professional workspace managers with complete structural modeling flexibility across any international territory:</p>
+        </section>
+
+        <section class="features">
+            <div class="feature-card">
+                <h3>1. Custom Statutory Asset Presets</h3>
+                <p>Configure, lock in, and override regional tax thresholds, operational rule matrices, and specific local regulatory on-costs within an isolated system memory settings profile.</p>
             </div>
-        </div>
+            <div class="feature-card">
+                <h3>2. Bidirectional Margin Logic</h3>
+                <p>Seamlessly transition between pay-led and charge-led calculation schemas. Instantly determine exact target bill rates based on raw global worker cost expectations.</p>
+            </div>
+            <div class="feature-card">
+                <h3>3. Compliance Threshold Metrics</h3>
+                <p>Establish automated safety parameters to cross-verify dynamic client quotes against localized minimum wage standards and international shift eligibility parameters.</p>
+            </div>
+            <div class="feature-card">
+                <h3>4. Standardized Contribution Modeling</h3>
+                <p>A flexible, generic computational math framework built to process employer payroll contributions, insurance burdens, and specialized holiday accrual variables on-device.</p>
+            </div>
+            <div class="feature-card">
+                <h3>5. Pre-Employment Audit Protocols</h3>
+                <p>Configure custom mandatory compliance parameters and vetting criteria lists straight into your internal pricing and client quotation workflow pipeline.</p>
+            </div>
+            <div class="feature-card">
+                <h3>6. Safety Floor Margin Rule Safeguards</h3>
+                <p>Receive instant workspace visual alerts designed to notify users immediately if an active transactional cost model falls below your corporate net profit target guidelines.</p>
+            </div>
+        </section>
 
         <footer>
             <p>&copy; 2026 AgencyCalc Pro. All rights reserved.</p>
