@@ -46,7 +46,7 @@
         }
 
         header {
-            padding: 16px 0;
+            padding: 12px 0 16px 0;
             border-bottom: 1px solid var(--border);
             display: flex;
             justify-content: space-between;
@@ -124,48 +124,34 @@
             box-shadow: 0 1px 2px rgba(0,0,0,0.05);
         }
 
-        .theme-toggle-btn:hover {
-            transform: scale(1.05);
+        .content-body {
+            max-width: 750px;
+            margin: 30px auto;
         }
 
-        .hero {
-            padding: 40px 0;
-            text-align: center;
-            max-width: 850px;
-            margin: 0 auto;
-        }
-
-        h1 {
-            font-size: 28px;
-            font-weight: 800;
-            line-height: 1.2;
-            margin-bottom: 12px;
+        h1 { 
+            color: var(--text-main); 
+            font-size: 26px; 
+            margin-bottom: 8px; 
+            border-bottom: 1px solid var(--border); 
+            padding-bottom: 12px; 
+            font-weight: 800; 
             letter-spacing: -0.5px;
         }
 
-        .sub-headline {
-            font-size: 14px;
-            font-weight: 700;
-            color: var(--accent);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 20px;
-            background-color: var(--toggle-bg);
-            display: inline-block;
-            padding: 4px 12px;
-            border-radius: 12px;
-        }
-
-        .hero p {
-            font-size: 15px;
+        .news-intro {
             color: var(--text-muted);
+            margin-top: 14px;
+            margin-bottom: 24px;
+            font-size: 14px;
+            line-height: 1.6;
         }
 
-        .features {
+        .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 20px;
-            padding: 10px 0;
+            margin-top: 24px;
         }
 
         .feature-card {
@@ -177,7 +163,7 @@
         }
 
         .feature-card h3 {
-            font-size: 18px;
+            font-size: 16px;
             margin-bottom: 8px;
             color: var(--accent);
             font-weight: 700;
@@ -185,7 +171,7 @@
 
         .feature-card p {
             color: var(--text-muted);
-            font-size: 14px;
+            font-size: 13.5px;
             line-height: 1.5;
         }
 
@@ -217,12 +203,9 @@
             .back-link { font-size: 15px; }
             .header-actions { gap: 20px; }
             .theme-toggle-btn { width: 34px; height: 34px; font-size: 15px; }
-            .hero { padding: 80px 0 60px 0; }
-            h1 { font-size: 44px; }
-            .sub-headline { font-size: 16px; margin-bottom: 30px; }
-            .hero p { font-size: 18px; }
-            .features { gap: 24px; padding: 40px 0; }
-            .feature-card { padding: 32px; }
+            .content-body { margin: 40px auto; }
+            h1 { font-size: 32px; }
+            .features-grid { grid-template-columns: repeat(2, 1fr); }
         }
     </style>
 </head>
@@ -245,38 +228,40 @@
             </div>
         </header>
         
-        <section class="hero">
-            <div class="sub-headline">Global Release Update v2.4.0</div>
-            <h1>Multi-Jurisdictional CPQ Engine Upgrades Are Live</h1>
-            <p>Our calculation architecture has been completely updated. The core engine now provides cross-border recruiters, enterprise staffing agencies, and professional workspace managers with complete structural modeling flexibility across any international territory:</p>
-        </section>
+        <div class="content-body">
+            <h1>Latest Platform Releases & Updates</h1>
+            
+            <p class="news-intro">
+                <strong>Global Release Update v2.4.0 (May 2026):</strong> Our calculation architecture has been completely upgraded. The core engine now provides cross-border recruiters, enterprise staffing agencies, and professional workspace managers with complete structural modeling flexibility across any international territory:
+            </p>
 
-        <section class="features">
-            <div class="feature-card">
-                <h3>1. Custom Statutory Asset Presets</h3>
-                <p>Configure, lock in, and override regional tax thresholds, operational rule matrices, and specific local regulatory on-costs within an isolated system memory settings profile.</p>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>1. Custom Statutory Asset Presets</h3>
+                    <p>Configure, lock in, and override regional tax thresholds, operational rule matrices, and specific local regulatory on-costs within an isolated system memory settings profile.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>2. Bidirectional Margin Logic</h3>
+                    <p>Seamlessly transition between pay-led and charge-led calculation schemas. Instantly determine exact target bill rates based on raw global worker cost expectations.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>3. Compliance Threshold Metrics</h3>
+                    <p>Establish automated safety parameters to cross-verify dynamic client quotes against localized minimum wage standards and international shift eligibility parameters.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>4. Standardized Contribution Modeling</h3>
+                    <p>A flexible, generic computational math framework built to process employer payroll contributions, insurance burdens, and specialized holiday accrual variables on-device.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>5. Pre-Employment Audit Protocols</h3>
+                    <p>Configure custom mandatory compliance parameters and vetting criteria lists straight into your internal pricing and client quotation workflow pipeline.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>6. Safety Floor Margin Rule Safeguards</h3>
+                    <p>Receive instant workspace visual alerts designed to notify users immediately if an active transactional cost model falls below your corporate net profit target guidelines.</p>
+                </div>
             </div>
-            <div class="feature-card">
-                <h3>2. Bidirectional Margin Logic</h3>
-                <p>Seamlessly transition between pay-led and charge-led calculation schemas. Instantly determine exact target bill rates based on raw global worker cost expectations.</p>
-            </div>
-            <div class="feature-card">
-                <h3>3. Compliance Threshold Metrics</h3>
-                <p>Establish automated safety parameters to cross-verify dynamic client quotes against localized minimum wage standards and international shift eligibility parameters.</p>
-            </div>
-            <div class="feature-card">
-                <h3>4. Standardized Contribution Modeling</h3>
-                <p>A flexible, generic computational math framework built to process employer payroll contributions, insurance burdens, and specialized holiday accrual variables on-device.</p>
-            </div>
-            <div class="feature-card">
-                <h3>5. Pre-Employment Audit Protocols</h3>
-                <p>Configure custom mandatory compliance parameters and vetting criteria lists straight into your internal pricing and client quotation workflow pipeline.</p>
-            </div>
-            <div class="feature-card">
-                <h3>6. Safety Floor Margin Rule Safeguards</h3>
-                <p>Receive instant workspace visual alerts designed to notify users immediately if an active transactional cost model falls below your corporate net profit target guidelines.</p>
-            </div>
-        </section>
+        </div>
 
         <footer>
             <p>&copy; 2026 AgencyCalc Pro. All rights reserved.</p>
